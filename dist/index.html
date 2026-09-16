@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="灵境未然 Twin Sentinel——融合数字孪生、人工智能与移动机器人，构建面向室内场景的主动安全系统。">
+  <meta name="theme-color" content="#ffffff">
+  <title>Twin Sentinel · 灵境未然</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%230d1726'/%3E%3Cpath d='M14 20h36M24 20v28M40 20v28' stroke='%2369bdf7' stroke-width='6' stroke-linecap='round'/%3E%3Cpath d='M18 44c8-8 20-8 28 0' fill='none' stroke='%23ffffff' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+  <style>
+    :root { --ink:#0d1726; --muted:#647184; --line:#e8edf2; --blue:#1488d6; --max:1200px; }
+    * { box-sizing: border-box; }
+    html { background: #fff; }
+    body { margin:0; min-height:100vh; color:var(--ink); background:#fff; font-family:Inter,"SF Pro Display","PingFang SC","Microsoft YaHei",system-ui,sans-serif; font-size:16px; line-height:1.65; }
+    .page { width:min(var(--max),calc(100% - 48px)); margin:0 auto; }
+    header { height:88px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--line); }
+    .brand { display:flex; align-items:center; gap:12px; color:inherit; text-decoration:none; }
+    .mark { position:relative; width:31px; height:31px; }
+    .mark::before,.mark::after { content:""; position:absolute; width:18px; height:22px; border:2px solid var(--blue); border-radius:6px; transform:rotate(45deg); }
+    .mark::before { left:1px; top:3px; opacity:.4; }
+    .mark::after { right:1px; bottom:3px; }
+    .brand strong { display:block; font-size:.93rem; letter-spacing:.12em; line-height:1.15; }
+    .brand small { display:block; margin-top:4px; color:var(--muted); font-size:.72rem; letter-spacing:.28em; line-height:1; }
+    .actions { display:flex; align-items:center; gap:18px; }
+    .mail { color:var(--muted); font-size:.84rem; text-decoration:none; transition:color .2s ease; }
+    .mail:hover,.mail:focus-visible { color:var(--blue); outline:none; }
+    .language { min-width:46px; padding:7px 11px; border:1px solid var(--line); border-radius:999px; color:var(--ink); background:#fff; font:inherit; font-size:.78rem; font-weight:650; cursor:pointer; transition:border-color .2s ease,color .2s ease; }
+    .language:hover,.language:focus-visible { color:var(--blue); border-color:#bcd9ec; outline:none; }
+    main { min-height:calc(100vh - 150px); display:grid; grid-template-columns:.86fr 1.14fr; gap:clamp(30px,6vw,90px); align-items:center; padding:58px 0 64px; }
+    .copy { position:relative; z-index:2; }
+    .eyebrow { margin:0 0 18px; color:var(--blue); font-size:.76rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; }
+    h1 { margin:0; font-size:clamp(3.1rem,6.2vw,5.9rem); line-height:.94; letter-spacing:-.065em; }
+    h1 span { display:block; color:var(--blue); }
+    .description { margin:22px 0 0; color:#354255; font-size:clamp(1.05rem,1.65vw,1.24rem); line-height:1.8; }
+    .visual { margin:0; position:relative; }
+    .visual img { display:block; width:100%; height:auto; object-fit:contain; }
+    footer { min-height:62px; display:flex; align-items:center; justify-content:space-between; gap:20px; border-top:1px solid var(--line); color:#8a95a3; font-size:.75rem; }
+    @media (prefers-reduced-motion:no-preference) {
+      .visual img { animation:float 6s ease-in-out infinite; }
+      @keyframes float { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-7px); } }
+    }
+    @media (max-width:780px) {
+      .page { width:min(100% - 28px,var(--max)); }
+      header { height:74px; }
+      .mail { display:none; }
+      .actions { gap:10px; }
+      main { min-height:auto; grid-template-columns:1fr; gap:24px; padding:46px 0 54px; }
+      .visual { order:-1; width:min(90%,520px); margin:0 auto; }
+      h1 { font-size:clamp(3rem,16vw,5rem); }
+      footer { flex-direction:column; align-items:flex-start; justify-content:center; padding:18px 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <a class="brand" href="#" aria-label="Twin Sentinel 首页"><span class="mark" aria-hidden="true"></span><span><strong>TWIN SENTINEL</strong><small>灵境未然</small></span></a>
+      <div class="actions"><a class="mail" href="mailto:shyr0796@gmail.com">shyr0796@gmail.com</a><button class="language" id="language" type="button" aria-label="Switch to English">EN</button></div>
+    </header>
+    <main>
+      <section class="copy" aria-labelledby="title">
+        <p class="eyebrow" id="eyebrow">数字孪生 · 人工智能 · 机器人</p>
+        <h1 id="title">Twin <span>Sentinel</span></h1>
+        <p class="description" id="description">灵境未然聚焦室内安全场景，融合数字孪生、人工智能与移动机器人，构建从实时感知、风险研判到现场响应的主动安全系统。</p>
+      </section>
+      <figure class="visual"><img src="twin-sentinel-scene.png" alt="室内建筑、数字孪生模型与智能巡检机器人的概念场景"></figure>
+    </main>
+    <footer><span>© 2026 Twin Sentinel · 灵境未然</span><span>Guangzhou · China</span></footer>
+  </div>
+  <script>
+    const language = document.querySelector("#language");
+    const eyebrow = document.querySelector("#eyebrow");
+    const description = document.querySelector("#description");
+    const visual = document.querySelector(".visual img");
+    let locale = "zh";
+    const copy = {
+      zh: {
+        eyebrow: "数字孪生 · 人工智能 · 机器人",
+        description: "灵境未然聚焦室内安全场景，融合数字孪生、人工智能与移动机器人，构建从实时感知、风险研判到现场响应的主动安全系统。",
+        button: "EN",
+        label: "Switch to English",
+        alt: "室内建筑、数字孪生模型与智能巡检机器人的概念场景"
+      },
+      en: {
+        eyebrow: "Digital Twin · AI · Robotics",
+        description: "Twin Sentinel integrates digital twins, AI and mobile robotics to build proactive indoor safety systems—from real-time sensing and risk assessment to on-site response.",
+        button: "中文",
+        label: "切换至中文",
+        alt: "Concept scene of an indoor building, its digital twin and an autonomous inspection robot"
+      }
+    };
+    language.addEventListener("click", () => {
+      locale = locale === "zh" ? "en" : "zh";
+      const next = copy[locale];
+      document.documentElement.lang = locale === "zh" ? "zh-CN" : "en";
+      eyebrow.textContent = next.eyebrow;
+      description.textContent = next.description;
+      language.textContent = next.button;
+      language.setAttribute("aria-label", next.label);
+      visual.alt = next.alt;
+    });
+  </script>
+</body>
+</html>
