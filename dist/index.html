@@ -14,18 +14,11 @@
     body { margin:0; min-height:100vh; color:var(--ink); background:#fff; font-family:Inter,"SF Pro Display","PingFang SC","Microsoft YaHei",system-ui,sans-serif; font-size:16px; line-height:1.65; }
     .page { width:min(var(--max),calc(100% - 48px)); margin:0 auto; }
     header { height:88px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--line); }
-    .brand { display:flex; align-items:center; gap:12px; color:inherit; text-decoration:none; }
-    .mark { position:relative; width:31px; height:31px; }
-    .mark::before,.mark::after { content:""; position:absolute; width:18px; height:22px; border:2px solid var(--blue); border-radius:6px; transform:rotate(45deg); }
-    .mark::before { left:1px; top:3px; opacity:.4; }
-    .mark::after { right:1px; bottom:3px; }
-    .brand strong { display:block; font-size:.93rem; letter-spacing:.12em; line-height:1.15; }
-    .brand small { display:block; margin-top:4px; color:var(--muted); font-size:.72rem; letter-spacing:.28em; line-height:1; }
+    .brand { display:flex; align-items:center; color:inherit; text-decoration:none; }
+    .brand-logo { display:block; width:auto; height:58px; }
     .actions { display:flex; align-items:center; gap:18px; }
     .nav-link { color:var(--muted); font-size:.84rem; text-decoration:none; transition:color .2s ease; }
     .nav-link:hover,.nav-link:focus-visible { color:var(--blue); outline:none; }
-    .mail { color:var(--muted); font-size:.84rem; text-decoration:none; transition:color .2s ease; }
-    .mail:hover,.mail:focus-visible { color:var(--blue); outline:none; }
     .language { min-width:46px; padding:7px 11px; border:1px solid var(--line); border-radius:999px; color:var(--ink); background:#fff; font:inherit; font-size:.78rem; font-weight:650; cursor:pointer; transition:border-color .2s ease,color .2s ease; }
     .language:hover,.language:focus-visible { color:var(--blue); border-color:#bcd9ec; outline:none; }
     main { min-height:calc(100vh - 150px); display:grid; grid-template-columns:.86fr 1.14fr; gap:clamp(30px,6vw,90px); align-items:center; padding:58px 0 64px; }
@@ -34,9 +27,12 @@
     h1 { margin:0; font-size:clamp(3.1rem,6.2vw,5.9rem); line-height:.94; letter-spacing:-.065em; }
     h1 span { display:block; color:var(--blue); }
     .description { margin:22px 0 0; color:#354255; font-size:clamp(1.05rem,1.65vw,1.24rem); line-height:1.8; }
+    .intro-contact { display:inline-flex; align-items:center; gap:10px; margin-top:24px; color:var(--ink); font-size:.88rem; font-weight:650; text-decoration:none; }
+    .intro-contact span:first-child { color:var(--muted); font-size:.76rem; font-weight:600; letter-spacing:.08em; }
+    .intro-contact:hover,.intro-contact:focus-visible { color:var(--blue); outline:none; }
     .visual { margin:0; position:relative; }
     .visual img { display:block; width:100%; height:auto; object-fit:contain; }
-    .news { padding:52px 0 64px; border-top:1px solid var(--line); }
+    .news,.products { padding:52px 0 64px; border-top:1px solid var(--line); }
     .section-heading { display:grid; grid-template-columns:.65fr 1.35fr; gap:clamp(28px,6vw,90px); align-items:end; margin-bottom:22px; }
     .section-heading .eyebrow { margin:0 0 10px; }
     .section-heading h2 { margin:0; font-size:clamp(1.85rem,3vw,2.8rem); line-height:1.08; letter-spacing:-.04em; }
@@ -49,6 +45,11 @@
     .news-copy h3 { margin:0 0 14px; font-size:clamp(1.55rem,2.35vw,2.25rem); line-height:1.2; letter-spacing:-.03em; }
     .news-copy p { margin:0; color:#475569; font-size:.94rem; line-height:1.65; }
     .news-copy p + p { margin-top:8px; }
+    .product-card { display:grid; grid-template-columns:minmax(150px,.42fr) minmax(0,1.58fr); gap:clamp(26px,5vw,72px); align-items:center; min-height:220px; padding:clamp(28px,4vw,48px); border:1px solid var(--line); border-radius:22px; background:#f8fafc; }
+    .product-status { display:flex; align-items:center; justify-content:center; min-height:116px; border:1px solid #d8e6ef; border-radius:18px; color:var(--blue); background:#fff; font-size:.85rem; font-weight:750; letter-spacing:.16em; }
+    .product-copy .eyebrow { margin-bottom:10px; }
+    .product-copy h3 { margin:0 0 12px; font-size:clamp(1.55rem,2.35vw,2.25rem); line-height:1.2; letter-spacing:-.03em; }
+    .product-copy p:last-child { max-width:680px; margin:0; color:#475569; font-size:.94rem; line-height:1.7; }
     footer { min-height:62px; display:flex; align-items:center; justify-content:space-between; gap:20px; border-top:1px solid var(--line); color:#8a95a3; font-size:.75rem; }
     @media (prefers-reduced-motion:no-preference) {
       .visual img { animation:float 6s ease-in-out infinite; }
@@ -57,17 +58,19 @@
     @media (max-width:780px) {
       .page { width:min(100% - 28px,var(--max)); }
       header { height:74px; }
-      .mail { display:none; }
+      .brand-logo { height:48px; }
       .nav-link { display:none; }
       .actions { gap:10px; }
       main { min-height:auto; grid-template-columns:1fr; gap:24px; padding:46px 0 54px; }
       .visual { order:-1; width:min(90%,520px); margin:0 auto; }
       h1 { font-size:clamp(3rem,16vw,5rem); }
-      .news { padding:50px 0 58px; }
+      .news,.products { padding:50px 0 58px; }
       .section-heading { grid-template-columns:1fr; gap:16px; }
       .news-card { grid-template-columns:1fr; border-radius:18px; }
       .news-cover { height:240px; min-height:0; border-right:0; border-bottom:1px solid var(--line); }
       .news-copy { padding:26px 24px 30px; }
+      .product-card { grid-template-columns:1fr; gap:22px; border-radius:18px; }
+      .product-status { min-height:76px; }
       footer { flex-direction:column; align-items:flex-start; justify-content:center; padding:18px 0; }
     }
   </style>
@@ -75,14 +78,15 @@
 <body>
   <div class="page">
     <header>
-      <a class="brand" href="#" aria-label="Twin Sentinel 首页"><span class="mark" aria-hidden="true"></span><span><strong>TWIN SENTINEL</strong><small>灵境未然</small></span></a>
-      <div class="actions"><a class="nav-link" id="news-link" href="#news">团队动态</a><a class="mail" href="mailto:shyr0796@gmail.com">shyr0796@gmail.com</a><button class="language" id="language" type="button" aria-label="Switch to English">EN</button></div>
+      <a class="brand" href="#" aria-label="Twin Sentinel 首页"><img class="brand-logo" src="twinsentinel-logo.svg" alt="Twin Sentinel · 灵境未然"></a>
+      <nav class="actions" aria-label="主要导航"><a class="nav-link" id="intro-link" href="#intro">介绍</a><a class="nav-link" id="news-link" href="#news">团队动态</a><a class="nav-link" id="products-link" href="#products">产品发布</a><button class="language" id="language" type="button" aria-label="Switch to English">EN</button></nav>
     </header>
-    <main>
+    <main id="intro">
       <section class="copy" aria-labelledby="title">
         <p class="eyebrow" id="eyebrow">数字孪生 · 人工智能 · 机器人</p>
         <h1 id="title">Twin <span>Sentinel</span></h1>
         <p class="description" id="description">灵境未然聚焦室内安全场景，融合数字孪生、人工智能与移动机器人，构建从实时感知、风险研判到现场响应的主动安全系统。</p>
+        <a class="intro-contact" href="mailto:shyr0796@gmail.com"><span id="contact-label">联系邮箱</span><span>shyr0796@gmail.com</span></a>
       </section>
       <figure class="visual"><img src="twin-sentinel-scene.png" alt="室内建筑、数字孪生模型与智能巡检机器人的概念场景"></figure>
     </main>
@@ -101,6 +105,20 @@
         </div>
       </article>
     </section>
+    <section class="products" id="products" aria-labelledby="products-heading">
+      <div class="section-heading">
+        <div><p class="eyebrow" id="products-eyebrow">产品发布</p><h2 id="products-heading">产品与系统</h2></div>
+        <p id="products-intro">展示灵境未然的产品研发成果与正式发布信息。</p>
+      </div>
+      <article class="product-card">
+        <div class="product-status" id="product-status">研发中</div>
+        <div class="product-copy">
+          <p class="eyebrow" id="product-kicker">首款产品</p>
+          <h3 id="product-title">Twin Sentinel 室内智慧消防机器人系统</h3>
+          <p id="product-description">面向室内复杂场景，融合移动机器人、环境感知与数字孪生技术。目前处于研发与验证阶段，更多信息将在阶段验证完成后发布。</p>
+        </div>
+      </article>
+    </section>
     <footer><span>© 2026 Twin Sentinel · 灵境未然</span><span>Guangzhou · China</span></footer>
   </div>
   <script>
@@ -108,7 +126,10 @@
     const eyebrow = document.querySelector("#eyebrow");
     const description = document.querySelector("#description");
     const visual = document.querySelector(".visual img");
+    const introLink = document.querySelector("#intro-link");
     const newsLink = document.querySelector("#news-link");
+    const productsLink = document.querySelector("#products-link");
+    const contactLabel = document.querySelector("#contact-label");
     const newsEyebrow = document.querySelector("#news-eyebrow");
     const newsHeading = document.querySelector("#news-heading");
     const newsIntro = document.querySelector("#news-intro");
@@ -116,6 +137,13 @@
     const newsTitle = document.querySelector("#news-title");
     const newsBody1 = document.querySelector("#news-body-1");
     const newsBody2 = document.querySelector("#news-body-2");
+    const productsEyebrow = document.querySelector("#products-eyebrow");
+    const productsHeading = document.querySelector("#products-heading");
+    const productsIntro = document.querySelector("#products-intro");
+    const productStatus = document.querySelector("#product-status");
+    const productKicker = document.querySelector("#product-kicker");
+    const productTitle = document.querySelector("#product-title");
+    const productDescription = document.querySelector("#product-description");
     let locale = "zh";
     const copy = {
       zh: {
@@ -124,14 +152,24 @@
         button: "EN",
         label: "Switch to English",
         alt: "室内建筑、数字孪生模型与智能巡检机器人的概念场景",
+        introLink: "介绍",
         newsLink: "团队动态",
+        productsLink: "产品发布",
+        contactLabel: "联系邮箱",
         newsEyebrow: "团队动态",
         newsHeading: "项目新闻",
-        newsIntro: "记录灵境未然团的研讨、研发与项目进展。",
+        newsIntro: "记录灵境未然团队的研讨、研发与项目进展。",
         newsMeta: "2026 年 9 月 16 日 · 团队动态",
         newsTitle: "灵境未然团队举行首次项目研讨会",
         newsBody1: "9 月 16 日下午，灵境未然团队举行了首次项目研讨会。宋春作了专题报告，向团队成员介绍项目的核心内容与总体构想。",
-        newsBody2: "与会成员围绕项目方案、技术路线与下一阶段工作展开了交流讨论，为后续协同推进项目奠定了基础。"
+        newsBody2: "与会成员围绕项目方案、技术路线与下一阶段工作展开了交流讨论，为后续协同推进项目奠定了基础。",
+        productsEyebrow: "产品发布",
+        productsHeading: "产品与系统",
+        productsIntro: "展示灵境未然的产品研发成果与正式发布信息。",
+        productStatus: "研发中",
+        productKicker: "首款产品",
+        productTitle: "Twin Sentinel 室内智慧消防机器人系统",
+        productDescription: "面向室内复杂场景，融合移动机器人、环境感知与数字孪生技术。目前处于研发与验证阶段，更多信息将在阶段验证完成后发布。"
       },
       en: {
         eyebrow: "Digital Twin · AI · Robotics",
@@ -139,14 +177,24 @@
         button: "中文",
         label: "切换至中文",
         alt: "Concept scene of an indoor building, its digital twin and an autonomous inspection robot",
+        introLink: "About",
         newsLink: "Updates",
+        productsLink: "Products",
+        contactLabel: "Email",
         newsEyebrow: "Team Update",
         newsHeading: "Project News",
         newsIntro: "Updates from the Twin Sentinel team, from project discussions to research and development.",
         newsMeta: "September 16, 2026 · Team Update",
         newsTitle: "Twin Sentinel Holds Its First Project Workshop",
         newsBody1: "On the afternoon of September 16, the Twin Sentinel team held its first project workshop. Chun Song delivered a presentation introducing the project's core content and overall concept to the team.",
-        newsBody2: "Team members discussed the project plan, technical roadmap and next-stage priorities, laying the groundwork for coordinated progress."
+        newsBody2: "Team members discussed the project plan, technical roadmap and next-stage priorities, laying the groundwork for coordinated progress.",
+        productsEyebrow: "Product Release",
+        productsHeading: "Products & Systems",
+        productsIntro: "Product development milestones and official releases from Twin Sentinel.",
+        productStatus: "IN DEVELOPMENT",
+        productKicker: "FIRST PRODUCT",
+        productTitle: "Twin Sentinel Indoor Smart Firefighting Robot System",
+        productDescription: "Designed for complex indoor environments, the system integrates mobile robotics, environmental sensing and digital-twin technology. It is currently in development and validation, with further information to follow after milestone testing."
       }
     };
     language.addEventListener("click", () => {
@@ -158,7 +206,10 @@
       language.textContent = next.button;
       language.setAttribute("aria-label", next.label);
       visual.alt = next.alt;
+      introLink.textContent = next.introLink;
       newsLink.textContent = next.newsLink;
+      productsLink.textContent = next.productsLink;
+      contactLabel.textContent = next.contactLabel;
       newsEyebrow.textContent = next.newsEyebrow;
       newsHeading.textContent = next.newsHeading;
       newsIntro.textContent = next.newsIntro;
@@ -166,6 +217,13 @@
       newsTitle.textContent = next.newsTitle;
       newsBody1.textContent = next.newsBody1;
       newsBody2.textContent = next.newsBody2;
+      productsEyebrow.textContent = next.productsEyebrow;
+      productsHeading.textContent = next.productsHeading;
+      productsIntro.textContent = next.productsIntro;
+      productStatus.textContent = next.productStatus;
+      productKicker.textContent = next.productKicker;
+      productTitle.textContent = next.productTitle;
+      productDescription.textContent = next.productDescription;
     });
   </script>
 </body>
